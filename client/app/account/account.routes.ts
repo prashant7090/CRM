@@ -26,7 +26,8 @@ export default function routes($stateProvider) {
         url: '/signup',
         template: require('./signup/signup.html'),
         controller: 'SignupController',
-        controllerAs: 'vm'
+        controllerAs: 'vm',
+        authenticate: 'admin'
       })
       .state('settings', {
         url: '/settings',

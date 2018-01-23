@@ -25,18 +25,33 @@ export default class SignupController {
     this.$state = $state;
   }
 
+  /*
+      return User.save(user,
+        function(data) {
+          $cookies.put('token', data.token);
+          currentUser = User.get();
+          return safeCb(callback)(null, user);
+        },
+        function(err) {
+          Auth.logout();
+          return safeCb(callback)(err);
+        }).$promise;
+
+  */
+
   register(form) {
     this.submitted = true;
 
     if(form.$valid) {
-      return this.Auth.createUser({
+      return this.Auth.createSalesPerson({
         name: this.user.name,
         email: this.user.email,
         password: this.user.password
       })
       .then(() => {
         // Account created, redirect to home
-                this.$state.go('main');      })
+                this.$state.go('main');      
+              })
       .catch(err => {
         err = err.data;
         this.errors = {};

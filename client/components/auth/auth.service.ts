@@ -83,6 +83,26 @@ export function AuthService($location, $http, $cookies, $q, appConfig, Util, Use
         }).$promise;
     },
 
+
+        /**
+     * Create a sales person
+     *
+     * @param  {Object}   user     - user info
+     * @param  {Function} callback - function(error, user)
+     * @return {Promise}
+     */
+    createSalesPerson(user, callback?: Function) {
+      return User.save(user,
+        function(data) {
+          return safeCb(callback)(null);
+        },
+        function(err) {
+          return safeCb(callback)(err);
+        }).$promise;
+    },
+
+
+
     /**
      * Change password
      *
